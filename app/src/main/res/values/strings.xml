@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WeyandMarvel</string>
+    <string name="home_toolbar_title">Marvel</string>
     <string name="app_launch_name">Weyand\nMarvel</string>
     <string name="favorite_menu_title">Favorito</string>
     <string name="search_menu_title_custom">Pesquisar</string>

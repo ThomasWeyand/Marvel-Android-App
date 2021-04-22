@@ -42,6 +42,7 @@ class HomeActivity : BaseActivity(),
         loadListData()
         observeClickType()
         setupAdapterLoadingListeners()
+        supportActionBar?.title = getString(R.string.home_toolbar_title)
 
         binding.retryButton.setOnClickListener { adapter.retry() }
     }

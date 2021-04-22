@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">WeyandMarvel</string>
+    <string name="app_launch_name">Weyand\nMarvel</string>
+    <string name="favorite_menu_title">Favorito</string>
+    <string name="search_menu_title_custom">Pesquisar</string>
+    <string name="search_hint">Type something…</string>
+    <string name="search_item_by_name_description">Search Marvel characters by name</string>
+    <string name="no_result_found">No results found…</string>
+    <string name="try_again">Try again</string>
+    <string name="unavailable">Unavailable</string>
+    <string name="description">Description</string>
+
+</resources>

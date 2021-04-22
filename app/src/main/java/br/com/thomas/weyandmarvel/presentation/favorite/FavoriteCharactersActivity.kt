@@ -90,15 +90,13 @@ class FavoriteCharactersActivity : BaseActivity(),
         intent =
             CharacterDetailActivity.getIntent(
                 this,
-                clickData.character.mapToDetail(),
-                TAG
+                clickData.character.mapToDetail()
             )
         startActivity(intent)
 
     }
 
     companion object {
-        const val TAG = "FavoriteCharactersActivity"
         fun getIntent(context: Context) = Intent(context, FavoriteCharactersActivity::class.java)
     }
 

@@ -9,7 +9,6 @@ import br.com.thomas.weyandmarvel.R
 import br.com.thomas.weyandmarvel.databinding.CharacterDetailLayoutBinding
 import br.com.thomas.weyandmarvel.model.CharacterDetailVO
 import br.com.thomas.weyandmarvel.presentation.BaseActivity
-import br.com.thomas.weyandmarvel.presentation.favorite.FavoriteCharactersActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import kotlinx.android.synthetic.main.character_detail_layout.*
@@ -26,8 +25,6 @@ class CharacterDetailActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.character_detail_layout)
 
         setupViews()
-        setupTransition()
-
         setupFavoriteButton()
     }
 
@@ -49,22 +46,11 @@ class CharacterDetailActivity : BaseActivity() {
         item.let {
             it.isFavorite = !it.isFavorite
             binding.heartIcon?.isSelected = it.isFavorite
-            if (!it.isFavorite && isFromFavoriteScreen())
-                cancelExitTransition()
 
             lifecycleScope.launch {
                 detailViewModel.updateFavoriteItemDatabase(it)
             }
         }
-    }
-
-    private fun cancelExitTransition() {
-        window.run {
-            sharedElementExitTransition = null
-            sharedElementReturnTransition = null
-            sharedElementReenterTransition = null
-        }
-        binding.heroeImage.transitionName = null
     }
 
     private fun setupViews() {
@@ -81,38 +67,18 @@ class CharacterDetailActivity : BaseActivity() {
         }
     }
 
-    private fun setupTransition() {
-        getIntentExtra()?.let {
-            binding.heroeImage.transitionName = it.id.toString()
-        }
-    }
-
-    private fun isFromFavoriteScreen() =
-        getPreviousActivitynameExtra()?.let {
-            it == FavoriteCharactersActivity.TAG
-        } ?: run {
-            false
-        }
-
     private fun getIntentExtra() = intent?.extras?.getParcelable<CharacterDetailVO>(
         EXTRA_CHARACTER
     )
 
-    private fun getPreviousActivitynameExtra() = intent?.extras?.getString(
-        EXTRA_PREVIOUS_ACTIVITY
-    )
-
     companion object {
         private const val EXTRA_CHARACTER = "extra_character"
-        private const val EXTRA_PREVIOUS_ACTIVITY = "extra_previous_activity"
         fun getIntent(
             context: Context,
-            characterDetailVO: CharacterDetailVO,
-            previousActivityName: String? = null
+            characterDetailVO: CharacterDetailVO
         ) =
             Intent(context, CharacterDetailActivity::class.java).apply {
                 putExtra(EXTRA_CHARACTER, characterDetailVO)
-                putExtra(EXTRA_PREVIOUS_ACTIVITY, previousActivityName)
             }
     }
 }

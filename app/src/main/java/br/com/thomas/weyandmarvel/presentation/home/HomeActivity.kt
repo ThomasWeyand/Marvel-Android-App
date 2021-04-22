@@ -48,9 +48,6 @@ class HomeActivity : BaseActivity(),
 
     private fun setupAdapterLoadingListeners() {
         adapter.addLoadStateListener { loadState ->
-            val isListEmpty =
-                loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
-            showEmptyList(isListEmpty)
 
             binding.recycler.switchVisibility(loadState.mediator?.refresh is LoadState.NotLoading)
             binding.loadingSpinner.switchVisibility(loadState.mediator?.refresh is LoadState.Loading)
@@ -67,13 +64,6 @@ class HomeActivity : BaseActivity(),
                     Toast.LENGTH_LONG
                 ).show()
             }
-        }
-    }
-
-    private fun showEmptyList(isEmpty: Boolean) {
-        binding.apply {
-            recycler.switchVisibility(!isEmpty)
-            emptyResult.switchVisibility(isEmpty)
         }
     }
 

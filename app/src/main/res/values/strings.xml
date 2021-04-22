@@ -6,6 +6,7 @@
     <string name="search_hint">Type something…</string>
     <string name="search_item_by_name_description">Search Marvel characters by name</string>
     <string name="no_result_found">No results found…</string>
+    <string name="favorite_items_to_appear_here">Favorite items to appear here!</string>
     <string name="try_again">Try again</string>
     <string name="unavailable">Unavailable</string>
     <string name="description">Description</string>

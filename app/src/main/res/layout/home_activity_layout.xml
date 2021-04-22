@@ -44,21 +44,5 @@
             android:visibility="gone"
             tools:visibility="visible" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/emptyResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/no_result_found"
-            android:textColor="@android:color/white"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:visibility="visible" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -6,11 +6,13 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.thomas.weyandmarvel.presentation.utils.ClickCharacterType
 import br.com.thomas.weyandmarvel.R
 import br.com.thomas.weyandmarvel.databinding.FavoriteCharactersLayoutBinding
+import br.com.thomas.weyandmarvel.extension.switchVisibility
 import br.com.thomas.weyandmarvel.model.CharacterClickData
 import br.com.thomas.weyandmarvel.presentation.BaseActivity
 import br.com.thomas.weyandmarvel.presentation.utils.CharacterClickListener
@@ -36,6 +38,7 @@ class FavoriteCharactersActivity : BaseActivity(),
         fetchFavoriteData()
         observeClickType()
 
+        addAdapterListener()
         supportActionBar?.title = "Favorites"
     }
 
@@ -51,6 +54,18 @@ class FavoriteCharactersActivity : BaseActivity(),
             itemAnimator = DefaultItemAnimator()
             adapter = this@FavoriteCharactersActivity.adapter
         }
+    }
+
+    private fun addAdapterListener() {
+        adapter.addLoadStateListener { loadState ->
+            val isListEmpty =
+                loadState.refresh is LoadState.NotLoading && adapter.itemCount == 0
+            showEmptyMessage(isListEmpty)
+        }
+    }
+
+    private fun showEmptyMessage(listEmpty: Boolean) {
+        binding.emptyResult.switchVisibility(listEmpty)
     }
 
     private fun fetchFavoriteData() {

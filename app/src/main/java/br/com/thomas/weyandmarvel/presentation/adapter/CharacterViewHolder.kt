@@ -1,7 +1,5 @@
 package br.com.thomas.weyandmarvel.presentation.adapter
 
-import android.util.Pair
-import android.view.View
 import androidx.appcompat.widget.AppCompatImageView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.thomas.weyandmarvel.presentation.utils.ClickCharacterType
@@ -21,11 +19,11 @@ class CharacterViewHolder(
         binding.apply {
 
             thumbnail.setOnClickListener {
-                clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.OPEN_DETAILS, binding.thumbnail))
+                clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.OPEN_DETAILS))
             }
 
             name.setOnClickListener {
-                clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.OPEN_DETAILS, binding.thumbnail))
+                clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.OPEN_DETAILS))
             }
 
             name.text = item.name
@@ -47,7 +45,7 @@ class CharacterViewHolder(
 
     private fun selectHeartState(item: ResultItem.Character) {
         item.isFavorite = !item.isFavorite
-        clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.CHANGE_FAVORITE, binding.thumbnail))
+        clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.CHANGE_FAVORITE))
         binding.heartIcon?.isSelected = item.isFavorite
     }
 

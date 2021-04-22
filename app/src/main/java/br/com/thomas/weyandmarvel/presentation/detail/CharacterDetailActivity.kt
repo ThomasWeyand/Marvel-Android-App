@@ -1,6 +1,5 @@
 package br.com.thomas.weyandmarvel.presentation.detail
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle

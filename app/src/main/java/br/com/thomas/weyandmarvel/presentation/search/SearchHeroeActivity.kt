@@ -1,6 +1,5 @@
 package br.com.thomas.weyandmarvel.presentation.search
 
-import android.app.ActivityOptions
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -166,18 +165,7 @@ class SearchHeroeActivity : BaseActivity(), SearchView.OnQueryTextListener,
 
     private fun startDetailActivity(clickData: CharacterClickData) {
         intent = CharacterDetailActivity.getIntent(this, clickData.character.mapToDetail())
-        val options = clickData.transitionImage?.let {
-            ActivityOptions.makeSceneTransitionAnimation(
-                this,
-                it,
-                clickData.character.id.toString()
-            )
-        }
-        options?.let {
-            startActivity(intent, it.toBundle())
-        } ?: run {
             startActivity(intent)
-        }
     }
 
     companion object {

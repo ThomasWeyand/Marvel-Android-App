@@ -1,6 +1,5 @@
 package br.com.thomas.weyandmarvel.presentation.home
 
-import android.app.ActivityOptions
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -140,23 +139,7 @@ class HomeActivity : BaseActivity(),
                 clickData.character.mapToDetail()
             )
 
-        val options = clickData.transitionImage?.let {
-            ActivityOptions.makeSceneTransitionAnimation(
-                this,
-                it,
-                clickData.character.id.toString()
-            )
-        }
-
-
         startActivity(intent)
-
-       /* options?.let {
-            startActivity(intent, it.toBundle())
-        } ?: run {
-            startActivity(intent)
-        } */
-
 
     }
 

@@ -22,7 +22,7 @@ class FavoriteCharacterViewHolder(
             name.text = item.name
             loadImageFromUrl(item.thumbnail, thumbnail)
             container.setOnClickListener {
-                clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.OPEN_DETAILS, thumbnail))
+                clickListener.clickedHeroe(CharacterClickData(item, ClickCharacterType.OPEN_DETAILS))
             }
         }
     }

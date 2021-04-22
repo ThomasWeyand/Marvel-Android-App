@@ -1,16 +1,11 @@
 package br.com.thomas.weyandmarvel.presentation.favorite
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.core.app.ActivityOptionsCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.LoadState
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import br.com.thomas.weyandmarvel.presentation.utils.ClickCharacterType
@@ -83,18 +78,7 @@ class FavoriteCharactersActivity : BaseActivity(),
                 clickData.character.mapToDetail(),
                 TAG
             )
-        val options = clickData.transitionImage?.let {
-            ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this,
-                it,
-                clickData.character.id.toString()
-            )
-        }
-       options?.let {
-            startActivity(intent, it.toBundle())
-        } ?: run {
-            startActivity(intent)
-        }
+        startActivity(intent)
 
     }
 
